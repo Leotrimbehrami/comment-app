@@ -21,11 +21,11 @@ function App() {
       <CommentList comments={comments} setComments={setComments} />
       <CommentForm comments={comments} setComments={setComments} />
       
-      
-      
-      
     </>
   )
 }
+      
+      
+      
 
 export default App

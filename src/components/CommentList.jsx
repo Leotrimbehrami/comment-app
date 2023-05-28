@@ -12,18 +12,18 @@ const CommentList = ({ comments, setComments }) => {
     return(
       <div>
         {/* qitu vjen icon */}
-      <h2> {commentCount} Kommentar</h2>
-      {comments.map((comment, index)=> (
+        <h2>{commentCount} Kommentar</h2>
+      {comments.map((comment, index) => (
         <div key={index}>
-          <p>Name:{comment.name}</p>
-          <p>Datum;{comment.date}</p>
-          <p>Nachricht{comment.message}</p>
+          <p>{comment.name}</p>
+          <p>{comment.date}</p>
+          <p>{comment.message}</p>
           <button onClick={() => handleDelete(index)}>Delete</button>
         </div>
       ))}
-      </div>
-    )
-  };
+    </div>
+  );
+};
 
 
 

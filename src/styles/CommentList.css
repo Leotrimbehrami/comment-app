@@ -1,0 +1,37 @@
+.comment-list-container {
+  margin-top: 20px;
+}
+
+.comment-container {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.comment-name {
+  font-weight: bold;
+}
+
+.comment-date {
+  font-size: 12px;
+  color: #666;
+}
+
+.comment-message {
+  margin-top: 5px;
+}
+
+.comment-delete-btn {
+  margin-top: 10px;
+  background-color: #ff0000;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+
+.comment-delete-btn:hover {
+  background-color: #cc0000;
+}

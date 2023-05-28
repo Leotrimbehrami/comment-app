@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import CommentForm from "./CommentForm";
+import "../styles/CommentList.css";
 
 const CommentList = ({ comments, setComments }) => {
   const commentCount = comments.length;
@@ -10,15 +10,15 @@ const CommentList = ({ comments, setComments }) => {
 
   
     return(
-      <div>
+      <div className="comment-list-container">
         {/* qitu vjen icon */}
         <h2>{commentCount} Kommentar</h2>
       {comments.map((comment, index) => (
-        <div key={index}>
-          <p>{comment.name}</p>
-          <p>{comment.date}</p>
-          <p>{comment.message}</p>
-          <button onClick={() => handleDelete(index)}>Delete</button>
+        <div className="comment-container" key={index}>
+          <p className="comment-name">{comment.name}</p>
+          <p className="comment-date">{comment.date}</p>
+          <p className="comment-message">{comment.message}</p>
+          <button className="comment-delete-btn" onClick={() => handleDelete(index)}>Delete</button>
         </div>
       ))}
     </div>

@@ -5,7 +5,7 @@ const CommentList = ({ comments, setComments }) => {
   const commentCount = comments.length;
 
     const handleDelete = (index) => {
-      setComments(comments.filter((comment) => comment.index !== index))
+      setComments(comments.filter((comment, i) => i !== index))
     }
 
   
@@ -16,6 +16,7 @@ const CommentList = ({ comments, setComments }) => {
       {comments.map((comment, index)=> (
         <div key={index}>
           <p>Name:{comment.name}</p>
+          <p>Datum;{comment.date}</p>
           <p>Nachricht{comment.message}</p>
           <button onClick={() => handleDelete(index)}>Delete</button>
         </div>

@@ -1,3 +1,4 @@
+import { useEffect } from 'react'
 import { useState } from 'react'
 import CommentForm from './components/CommentForm'
 import CommentList from './components/CommentList'
@@ -5,7 +6,14 @@ import './index.css'
 
 
 function App() {
-  const [comments, setComments] = useState([])
+  const [comments, setComments] = useState(() => {
+    const savedComments = JSON.parse(localStorage.getItem("comments"));
+    return savedComments || [];
+  })
+
+  useEffect(() => {
+    localStorage.setItem("comments", JSON.stringify(comments))
+  }, [comments])
  
   return (
     <>

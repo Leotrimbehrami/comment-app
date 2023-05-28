@@ -14,7 +14,7 @@ const CommentForm = ({ comments, setComments }) => {
     console.log(e.target.name.value)
     console.log(e.target.message.value)
 
-    const ISODate = new Date().toLocaleDateString("de-DE", {
+    const ISODate = new Date().toLocaleString("de-DE", {
       year: "numeric",
       month: "long",
       day: "numeric",

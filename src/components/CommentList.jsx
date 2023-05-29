@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { BsFillChatLeftDotsFill } from 'react-icons/bs';
 import "../styles/CommentList.css";
 
 const CommentList = ({ comments, setComments }) => {
@@ -12,7 +13,10 @@ const CommentList = ({ comments, setComments }) => {
     return(
       <div className="comment-list-container">
         {/* qitu vjen icon */}
-        <h2>{commentCount} Kommentar</h2>
+        <h2 className="comment-title">
+          <BsFillChatLeftDotsFill />
+          {commentCount} Kommentar
+          </h2>
       {comments.map((comment, index) => (
         <div className="comment-container" key={index}>
           <p className="comment-name">{comment.name}</p>

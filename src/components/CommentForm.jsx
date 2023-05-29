@@ -11,11 +11,6 @@ const CommentForm = ({ comments, setComments }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (!isAccepted) {
-      setErrorText('Bitte akzeptiere die Datenschutzerklärung');
-      return;
-    }
-
     const ISODate = new Date().toLocaleString('de-DE', {
       year: 'numeric',
       month: 'long',
@@ -25,23 +20,25 @@ const CommentForm = ({ comments, setComments }) => {
     });
 
     const newComment = {
-      name: e.target.name.value,
-      message: e.target.message.value,
+      name,
+      message,
       date: ISODate,
     };
 
-    setComments([...comments, newComment]);
-
-    setName('');
-    setMessage('');
-    setEmail('');
-    setIsAccepted(false);
-    setErrorText('');
+    if (isAccepted) {
+      setComments([...comments, newComment]);
+      setName('');
+      setMessage('');
+      setEmail('');
+      setIsAccepted(false);
+      setErrorText('');
+    } else {
+      setErrorText('Bitte akzeptiere die Datenschutzerklärung');
+    }
   };
 
   const handlePrivacyChange = (e) => {
     setIsAccepted(e.target.checked);
-    setErrorText('');
   };
 
   return (
@@ -49,7 +46,7 @@ const CommentForm = ({ comments, setComments }) => {
       <form onSubmit={handleSubmit}>
         <h4>Schreib einen Kommentar</h4>
 
-        <p>Deine E-Mailadresse wird nicht öffentlich angezeigt. Erforderliche Felder sind mit * markiert.</p>
+        <p className='text-p'>Deine E-Mailadresse wird nicht öffentlich angezeigt. Erforderliche Felder sind mit * markiert.</p>
 
         <label htmlFor="message"></label>
         <textarea
@@ -72,35 +69,26 @@ const CommentForm = ({ comments, setComments }) => {
         />
         <br />
 
-        <br />
-
         <label htmlFor="email"></label>
         <input
           type="email"
           name="email"
           id="email"
-          placeholder="Ihre E-mail Adresse"
+          placeholder="Ihre E-Mail Adresse"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
         />
         <br />
 
         <div className="privacy-container">
-          <input
-            type="checkbox"
-            id="privacy"
-            checked={isAccepted}
-            onChange={handlePrivacyChange}
-          />
+          <input type="checkbox" id="privacy" checked={isAccepted} onChange={handlePrivacyChange} />
 
           <label htmlFor="privacy">Ich habe die Datenschutzerklärung gelesen und akzeptiere sie.</label>
         </div>
 
         {errorText && <p className="error">{errorText}</p>}
 
-        <button type="submit" disabled={!isAccepted}>
-          Kommentar Abschicken
-        </button>
+        <button type="submit">Kommentar Abschicken</button>
       </form>
     </div>
   );

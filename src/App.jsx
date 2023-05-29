@@ -2,6 +2,7 @@ import { useEffect } from 'react'
 import { useState } from 'react'
 import CommentForm from './components/CommentForm'
 import CommentList from './components/CommentList'
+import { BsFillChatTextFill } from 'react-icons/bs';
 import './styles/App.css'
 import './index.css'
 
@@ -19,16 +20,18 @@ function App() {
   return (
     
     <div className="container">
-      <h1>Teile deine Meinung zu diesem Artikel</h1>
+      <h1>
+      <BsFillChatTextFill />
+        Teile deine Meinung zu diesem Artikel</h1>
       <CommentList comments={comments} setComments={setComments} />
       <CommentForm comments={comments} setComments={setComments} />
     </div>
       )
     }
       
+export default App
     
       
       
       
 
-export default App
